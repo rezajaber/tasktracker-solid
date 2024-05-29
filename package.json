@@ -10,6 +10,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "^20.12.13",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
     "solid-devtools": "^0.29.2",
@@ -19,6 +20,7 @@
     "vite-plugin-solid": "^2.8.2"
   },
   "dependencies": {
+    "@ark-ui/solid": "^3.0.2",
     "@kobalte/core": "^0.13.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
