@@ -1,7 +1,7 @@
 import type { Component } from "solid-js";
 
-const App: Component = () => {
+const SearchBar: Component = () => {
   return <div></div>;
 };
 
-export default App;
+export default SearchBar;
