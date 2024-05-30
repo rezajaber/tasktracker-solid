@@ -14,8 +14,8 @@ const CategoryEdit: Component = () => {
   return (
     <div>
       <Dialog>
-        <DialogTrigger as-child>
-          <Button class="my-1 w-full">
+        <DialogTrigger class="w-full my-1">
+          <Button class="w-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -35,7 +35,6 @@ const CategoryEdit: Component = () => {
             Edit Categories
           </Button>
         </DialogTrigger>
-
         <DialogContent class="sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>Edit Categories</DialogTitle>
@@ -44,10 +43,10 @@ const CategoryEdit: Component = () => {
             </DialogDescription>
           </DialogHeader>
 
-          <div class="grid gap-5">
+          <div class="grid gap-4">
             <div class="grid gap-2">
               <div class="flex gap-2">
-                <TextFieldRoot>
+                <TextFieldRoot class="w-full">
                   <TextField
                     disabled
                     type="text"

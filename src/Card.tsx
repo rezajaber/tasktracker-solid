@@ -1,16 +1,19 @@
-import "./Card.css";
-
 import type { Component } from "solid-js";
 import { createSignal } from "solid-js";
 
-import type { DropdownMenuSubTriggerProps } from "@kobalte/core/dropdown-menu";
+import "./Card.css";
+import CategoryEdit from "./CategoryEdit";
+
+import { TextField, TextFieldRoot } from "@/components/ui/textfield";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { TextArea } from "@/components/ui/textarea";
-import { TextFieldRoot } from "@/components/ui/textfield";
+import type { DropdownMenuSubTriggerProps } from "@kobalte/core/dropdown-menu";
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
@@ -23,37 +26,99 @@ interface CardProps {
 }
 
 const App: Component<CardProps> = (props) => {
+  const [currentColor, setCurrentColor] = createSignal(props.priorityColor);
+  const [category, setCategory] = createSignal("No categories found");
+  const [taskName, setTaskName] = createSignal(props.cardTitle);
+
+  const colors = [
+    "text-green-500",
+    "text-yellow-500",
+    "text-orange-500",
+    "text-red-500",
+  ];
+
+  const colorChange = () => {
+    const currentIndex = colors.indexOf(currentColor());
+    const nextIndex = (currentIndex + 1) % colors.length;
+    setCurrentColor(colors[nextIndex]);
+  };
+
   return (
     <div>
-      {/* FUL CARD */}
+      {/* FULL CARD */}
       <div class="card-container grid-rows-layout grid gap-3.5 rounded-lg p-5">
         {/* HEADER OF CARD */}
-        <div class="flex items-center gap-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="12"
-            height="12"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class={`h-3 w-3 ${props.priorityColor} fill-current`}
-          >
-            <circle cx="12" cy="12" r="10" />
-          </svg>
+        <div class="flex justify-between  items-center">
+          <div class="flex items-center gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class={`h-3 w-3 ${currentColor()} fill-current cursor-pointer`}
+              onClick={colorChange}
+            >
+              <circle cx="12" cy="12" r="10" />
+            </svg>
 
-          <span class="font-medium">{props.cardCategory}</span>
+            <span class="font-medium">{props.cardCategory}</span>
+          </div>
+
+          {/* CATEGORY */}
+          <DropdownMenu>
+            <DropdownMenuTrigger
+              as={(props: DropdownMenuSubTriggerProps) => (
+                <Button size="xs" {...props}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-pencil"
+                  >
+                    <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z" />
+                    <path d="m15 5 4 4" />
+                  </svg>
+                </Button>
+              )}
+            />
+            <DropdownMenuContent class="w-52">
+              <DropdownMenuRadioGroup value={category()} onChange={setCategory}>
+                <DropdownMenuRadioItem value="No categories found">
+                  No Categories found
+                </DropdownMenuRadioItem>
+              </DropdownMenuRadioGroup>
+              <CategoryEdit />
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
 
         {/* BODY OF CARD */}
         <div class="-mt-1 flex flex-col gap-1">
-          <h1 class="line-clamp-1 resize-none text-lg font-semibold">
-            {props.cardTitle}
-          </h1>
+          <TextFieldRoot class="flex items-center gap-2">
+            <TextField
+              type="text"
+              value={taskName()}
+              placeholder="Taskname"
+              class="px-0 text-lg  font-semibold h-full border-none shadow-none focus-visible:outline-none focus-visible:ring-0 truncate"
+            />
+          </TextFieldRoot>
+
           <TextFieldRoot>
-            <TextArea class="line-clamp-3 resize-none text-sm">
+            <TextArea
+              class="line-clamp-3 resize-none text-sm"
+              placeholder="Task-Name?"
+            >
               {props.cardContent}
             </TextArea>
           </TextFieldRoot>
@@ -89,7 +154,12 @@ const App: Component<CardProps> = (props) => {
           <DropdownMenu placement="bottom">
             <DropdownMenuTrigger
               as={(props: DropdownMenuSubTriggerProps) => (
-                <Button variant="ghost" {...props}>
+                <Button
+                  size="xs"
+                  variant="ghost"
+                  class="px-0 hover:bg-transparent"
+                  {...props}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -109,7 +179,7 @@ const App: Component<CardProps> = (props) => {
                 </Button>
               )}
             />
-            <DropdownMenuContent class="grid w-40">
+            <DropdownMenuContent class="grid gap-1 w-40">
               <div class="flex cursor-pointer items-center gap-2 rounded-lg px-3 py-0.5 duration-300 ease-in-out hover:bg-accent">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

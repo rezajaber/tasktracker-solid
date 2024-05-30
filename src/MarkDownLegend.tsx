@@ -1,5 +1,7 @@
 import type { Component } from "solid-js";
 import { Button } from "@/components/ui/button";
+import Card from "./Card";
+
 import {
   Dialog,
   DialogContent,
@@ -7,7 +9,19 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogFooter,
 } from "@/components/ui/dialog";
+
+const cards = [
+  {
+    priorityColor: "text-red-500",
+    cardCategory: "Cyber Security",
+    cardTitle: "Hack The Box",
+    cardContent:
+      "Explore the latest trends in cybersecurity and learn how to protect your systems effectively.",
+    cardDate: "22. September 2024",
+  },
+];
 
 const MarkDownLegend: Component = () => {
   return (
@@ -33,7 +47,7 @@ const MarkDownLegend: Component = () => {
             </svg>
           </Button>
         </DialogTrigger>
-        <DialogContent class="max-h-[90dvh] max-w-xs grid-rows-[auto_minmax(0,1fr)_auto] rounded-md p-0 sm:max-w-[425px]">
+        <DialogContent class="max-h-[90dvh] max-w-xs grid-rows-[auto_minmax(0,1fr)_auto] rounded-md p-0 sm:max-w-[425px] place-items-center">
           <DialogHeader class="p-6 pb-0">
             <DialogTitle>Information - TaskTracker</DialogTitle>
             <DialogDescription>
@@ -41,99 +55,50 @@ const MarkDownLegend: Component = () => {
               work!
             </DialogDescription>
           </DialogHeader>
-          <div class="grid gap-4 overflow-y-auto px-6">
-            <div class="flex flex-col justify-between">
-              <div class="grid gap-6">
-                <div class="grid grid-cols-2 gap-2 text-center text-sm text-white sm:text-base">
-                  <p class="rounded-md bg-primary px-2.5 py-1">
-                    -- converts to —
-                  </p>
-                  <p class="rounded-md bg-primary px-2.5 py-1">
-                    ... converts to …
-                  </p>
-                  <p class="rounded-md bg-primary px-2.5 py-1">
-                    &lt;- converts to ←
-                  </p>
-                  <p class="rounded-md bg-primary px-2.5 py-1">
-                    &gt;- converts to →
-                  </p>
-                  <p class="rounded-md bg-primary px-2.5 py-1">
-                    (c) converts to ©
-                  </p>
-                  <p class="rounded-md bg-primary px-2.5 py-1">
-                    (r) converts to ®
-                  </p>
-                  <p class="rounded-md bg-primary px-2.5 py-1">
-                    (tm) converts to ™
-                  </p>
-                  <p class="rounded-md bg-primary px-2.5 py-1">
-                    (sm) converts to ℠
-                  </p>
-                  <p class="rounded-md bg-primary px-2.5 py-1">
-                    1/2 converts to ½
-                  </p>
-                  <p class="rounded-md bg-primary px-2.5 py-1">
-                    1/4 converts to ¼
-                  </p>
-                  <p class="rounded-md bg-primary px-2.5 py-1">
-                    3/4 converts to ¾
-                  </p>
-                  <p class="rounded-md bg-primary px-2.5 py-1">
-                    +/- converts to ±
-                  </p>
-                  <p class="rounded-md bg-primary px-2.5 py-1">
-                    != converts to ≠
-                  </p>
-                  <p class="rounded-md bg-primary px-2.5 py-1">
-                    &lt;&lt; converts to «
-                  </p>
-                  <p class="rounded-md bg-primary px-2.5 py-1">
-                    &gt;&gt; converts to »
-                  </p>
-                  <p class="rounded-md bg-primary px-2.5 py-1">
-                    2*3 converts to 2×3
-                  </p>
-                  <p class="bg-primary px-2.5 py-1 rounded-md">
-                    ^2 converts to ²
-                  </p>
-                  <p class="bg-primary px-2.5 py-1 rounded-md">
-                    ^3 converts to ³
-                  </p>
-                </div>
 
-                <div class="grid gap-2 text-sm sm:text-base">
-                  <p class="rounded-md bg-primary px-2.5 py-1 text-center text-white">
-                    # to ####### convert to h1 to h6
-                  </p>
-                  <p class="rounded-md bg-primary px-2.5 py-1 text-center text-white">
-                    == your word == convert to
-                    <span class="rounded-md bg-yellow-400 px-2 py-0.5 text-black">
-                      highlighted
-                    </span>
-                  </p>
-                  <p class="rounded-md bg-primary px-2.5 py-1 text-center text-white">
-                    * , - or + converts to a bullet list
-                  </p>
-                  <p class="rounded-md bg-primary px-2.5 py-1 text-center text-white">
-                    &gt; converts to BlockQuote
-                  </p>
-                  <p class="rounded-md bg-primary px-2.5 py-1 text-center text-white">
-                    ``` or ~~~~ converts to CodeBlock
-                  </p>
-                  <p class="rounded-md bg-primary px-2.5 py-1 text-center text-white">
-                    --- or ___ converts to a Horizontal Line
-                  </p>
-                  <p class="rounded-md bg-primary px-2.5 py-1 text-center text-white">
-                    ***word*** or ___word___ = <b>word</b>
-                  </p>
-                  <p class="rounded-md bg-primary px-2.5 py-1 text-center text-white">
-                    *word* or _word_ = <i>word</i>
-                  </p>
-                  <p class="rounded-md bg-primary px-2.5 py-1 text-center text-white">
-                    ~~word~~ = <s>word</s>
-                  </p>
-                </div>
-              </div>
+          {cards.map((card) => (
+            <Card
+              priorityColor={card.priorityColor}
+              cardCategory={card.cardCategory}
+              cardTitle={card.cardTitle}
+              cardContent={card.cardContent}
+              cardDate={card.cardDate}
+            />
+          ))}
+
+          <div class="grid gap-2 text-sm sm:text-base w-full px-6 pb-6 mt-1">
+            <p class="rounded-md bg-primary px-2.5 py-1 text-center text-white text-sm">
+              Click the circle to change the priority of the task.
+            </p>
+
+            <div class="">
+              <p class="rounded-md bg-primary px-2.5 py-1 text-center text-white text-sm">
+                Click the edit button to add or delete categories.
+              </p>
+            </div>
+
+            <div class="">
+              <p class="rounded-md bg-primary px-2.5 py-1 text-center text-white text-sm">
+                Click the title to edit it.
+              </p>
+            </div>
+
+            <div class="">
+              <p class="rounded-md bg-primary px-2.5 py-1 text-center text-white text-sm">
+                Click on the description to edit it.
+              </p>
+            </div>
+
+            <div class="">
+              <p class="rounded-md bg-primary px-2.5 py-1 text-center text-white text-sm">
+                Click the date icon to change the date.
+              </p>
+            </div>
+
+            <div class="">
+              <p class="rounded-md bg-primary px-2.5 py-1 text-center text-white text-sm">
+                Click the three dots to delete or mark a task as done.
+              </p>
             </div>
           </div>
         </DialogContent>
