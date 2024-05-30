@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@ark-ui/solid": "^3.0.2",
-    "@kobalte/core": "^0.13.1",
+    "@kobalte/core": "^0.13.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "solid-js": "^1.8.11",

@@ -3,8 +3,6 @@ import { render } from "solid-js/web";
 
 import "./index.css";
 import App from "./App";
-import CardDetails from "./CardDetails";
-import SearchBar from "./SearchBar";
 
 const root = document.getElementById("root");
 
@@ -15,5 +13,3 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
 }
 
 render(() => <App />, root!);
-render(() => <SearchBar />, root!);
-render(() => <CardDetails />, root!);
