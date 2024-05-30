@@ -3,7 +3,8 @@ import { render } from "solid-js/web";
 
 import "./index.css";
 import App from "./App";
-import MarkDownLegend from "./MarkDownLegend";
+import CardDetails from "./CardDetails";
+import SearchBar from "./SearchBar";
 
 const root = document.getElementById("root");
 
@@ -14,4 +15,5 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
 }
 
 render(() => <App />, root!);
-render(() => <MarkDownLegend />, root!);
+render(() => <SearchBar />, root!);
+render(() => <CardDetails />, root!);

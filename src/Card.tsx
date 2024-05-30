@@ -1,7 +1,7 @@
 import type { Component } from "solid-js";
 
-const Card: Component = () => {
+const App: Component = () => {
   return <div></div>;
 };
 
-export default Card;
+export default App;
