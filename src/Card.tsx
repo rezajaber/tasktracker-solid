@@ -23,8 +23,6 @@ interface CardProps {
 }
 
 const App: Component<CardProps> = (props) => {
-  const [priorityColor, setPriorityColor] = createSignal("some-color-class"); // Initialize with a default class or get it from props
-
   return (
     <div>
       {/* FUL CARD */}
