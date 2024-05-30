@@ -124,7 +124,7 @@ const App: Component<CardProps> = (props) => {
           </TextFieldRoot>
         </div>
 
-        <Separator class="w-full bg-gray-500" />
+        <Separator class="w-full border-gray-500" />
 
         {/* FOOTER OF CARD */}
         <div class="flex items-center justify-between">
