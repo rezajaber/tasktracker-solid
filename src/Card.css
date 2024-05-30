@@ -1,0 +1,11 @@
+.card-container {
+  width: 340px;
+  height: 220px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.grid-rows-layout {
+  grid-template-rows: auto 1fr auto auto;
+}
+.ellipsis-icon {
+  stroke-width: 3px;
+}
