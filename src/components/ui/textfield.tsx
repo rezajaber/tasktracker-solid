@@ -14,7 +14,9 @@ export const TextFieldRoot = <T extends ValidComponent = "div">(
 ) => {
   const [local, rest] = splitProps(props as TextFieldProps, ["class"]);
 
-  return <TextFieldPrimitive.Root class={cn("space-y-1", local.class)} {...rest} />;
+  return (
+    <TextFieldPrimitive.Root class={cn("space-y-1", local.class)} {...rest} />
+  );
 };
 
 const textfieldLabel = cva(
@@ -22,18 +24,18 @@ const textfieldLabel = cva(
   {
     variants: {
       label: {
-        true: "data-[invalid]:text-destructive"
+        true: "data-[invalid]:text-destructive",
       },
       error: {
-        true: "text-destructive"
+        true: "text-destructive",
       },
       description: {
-        true: "font-normal text-muted-foreground"
-      }
+        true: "font-normal text-muted-foreground",
+      },
     },
     defaultVariants: {
-      label: true
-    }
+      label: true,
+    },
   }
 );
 
@@ -46,17 +48,25 @@ export const TextFieldLabel = <T extends ValidComponent = "label">(
 ) => {
   const [local, rest] = splitProps(props as TextFieldLabelProps, ["class"]);
 
-  return <TextFieldPrimitive.Label class={cn(textfieldLabel(), local.class)} {...rest} />;
+  return (
+    <TextFieldPrimitive.Label
+      class={cn(textfieldLabel(), local.class)}
+      {...rest}
+    />
+  );
 };
 
-type TextFieldErrorMessageProps = TextFieldPrimitive.TextFieldErrorMessageProps & {
-  class?: string;
-};
+type TextFieldErrorMessageProps =
+  TextFieldPrimitive.TextFieldErrorMessageProps & {
+    class?: string;
+  };
 
 export const TextFieldErrorMessage = <T extends ValidComponent = "div">(
   props: PolymorphicProps<T, TextFieldErrorMessageProps>
 ) => {
-  const [local, rest] = splitProps(props as TextFieldErrorMessageProps, ["class"]);
+  const [local, rest] = splitProps(props as TextFieldErrorMessageProps, [
+    "class",
+  ]);
 
   return (
     <TextFieldPrimitive.ErrorMessage
@@ -66,14 +76,17 @@ export const TextFieldErrorMessage = <T extends ValidComponent = "div">(
   );
 };
 
-type TextFieldDescriptionProps = TextFieldPrimitive.TextFieldDescriptionProps & {
-  class?: string;
-};
+type TextFieldDescriptionProps =
+  TextFieldPrimitive.TextFieldDescriptionProps & {
+    class?: string;
+  };
 
 export const TextFieldDescription = <T extends ValidComponent = "div">(
   props: PolymorphicProps<T, TextFieldDescriptionProps>
 ) => {
-  const [local, rest] = splitProps(props as TextFieldDescriptionProps, ["class"]);
+  const [local, rest] = splitProps(props as TextFieldDescriptionProps, [
+    "class",
+  ]);
 
   return (
     <TextFieldPrimitive.Description
