@@ -89,7 +89,7 @@ const App: Component = () => {
       </div>
 
       <div class="overlay relative h-[560px] overflow-hidden rounded-lg">
-        <div class="no-scrollbar grid h-full grid-cols-3 gap-5 overflow-y-scroll p-2">
+        <div class="no-scrollbar grid h-full gap-5 overflow-y-scroll p-2 md:grid-cols-2 xl:grid-cols-3">
           {cards.map((card) => (
             <Card
               priorityColor={card.priorityColor}

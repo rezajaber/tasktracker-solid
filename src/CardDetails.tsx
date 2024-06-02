@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 const Card: Component = () => {
   return (
     <div>
-      <div class="flex justify-between">
+      <div class="mx-auto -mt-1 flex w-80 justify-between md:mx-0 md:w-full">
         <a
           href="https://github.com/rezajaber"
           target="_blank"
