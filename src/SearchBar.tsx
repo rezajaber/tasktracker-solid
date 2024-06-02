@@ -22,14 +22,14 @@ const SearchBar: Component = () => {
 
   return (
     <div class="mx-auto grid justify-between gap-2 md:mx-0 md:flex">
-      <div class="flex gap-2">
-        <div class="relative w-80 max-w-md items-center">
+      <div class="flex items-center gap-2">
+        <div class="relative w-[22rem] md:w-96 max-w-md items-center">
           <TextFieldRoot class="w-full max-w-xs ">
             <TextField
               id="search"
               type="text"
               placeholder="Create or Search for a Task..."
-              class="pl-10"
+              class="pl-10 w-[22rem] md:w-96"
             />
           </TextFieldRoot>
           <span class="absolute inset-y-0 start-0 flex items-center justify-center px-3">
